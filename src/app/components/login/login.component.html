@@ -1,0 +1,55 @@
+<div class="login-card">
+    <form [formGroup]="rForm" (ngSubmit)="logIn(rForm.value)" class="example-form">
+      <mat-card>
+        <mat-card-title>
+  
+          <div>
+            <strong>
+              <mat-icon>lock_open</mat-icon> Login
+            </strong>
+          </div>
+          <br /><br />
+        </mat-card-title>
+        <mat-card-content>
+          <div>
+            <mat-form-field class="full-width-input" appearance="outline">
+              <mat-label>Usuario</mat-label>
+              <input type="text" matInput placeholder="myUser" formControlName="userName">
+              <mat-icon matSuffix>contact_mail</mat-icon>
+              <mat-error *ngIf="!rForm.controls['userName'].valid && rForm.controls['userName'].touched ">Debe ingresar un
+                usuario!</mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched ">Debe ingresar la
+                contraseña!</mat-error>
+            </mat-form-field>
+          </div>
+  
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary">Iniciar</button>
+        </mat-card-actions>
+        <mat-card-footer>
+            <p>
+                <span *ngIf="logNOk">
+                    <div class="alert alert-danger">
+                        <mat-icon>mood_bad</mat-icon>
+                        <hr>
+                        {{errorMessaje}}
+                    </div>
+                </span>
+            </p>
+        </mat-card-footer>
+      </mat-card>
+    </form>
+
+
+  </div>

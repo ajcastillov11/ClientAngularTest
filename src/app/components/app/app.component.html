@@ -1,0 +1,18 @@
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <div>
+        <button mat-raised-button color="primary" [routerLink]="''"> <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon> </button>
+        <span *ngIf="securityObject && securityObject.isAuthenticated ; else Islogboton">
+          <button mat-raised-button color="primary" [routerLink]="'/products'"> Ver Productos </button>
+          <button mat-raised-button color="primary" class="alignRight" (click)="logOut()"> LogOut </button>
+        </span>
+        <ng-template #Islogboton>
+          <button mat-raised-button color="primary" class="alignRight" [routerLink]="'/login'"> Login </button>
+          <button mat-raised-button color="primary" class="alignRight" [routerLink]="'/products'" > Ver Productos</button>
+        </ng-template>  
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="content" role="main">
+  <router-outlet></router-outlet>
+</div>
